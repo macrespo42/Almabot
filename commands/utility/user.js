@@ -5,8 +5,8 @@ module.exports = {
     .setName("user")
     .setDescription("Provide informations about the user"),
   async execute(interaction) {
-    await interaction.replay(
-      `This server is ${interaction.user.name} and has join ${interaction.member.joinedAt}.`,
+    await interaction.reply(
+      `This server is ${interaction.user.username} and has join ${interaction.member.joinedAt}.`,
     );
   },
 };
