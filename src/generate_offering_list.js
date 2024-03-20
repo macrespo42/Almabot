@@ -24,7 +24,7 @@ function getOfferingDatas(html) {
   const offeringInfos = bonusDiv.textContent.trim().split("\n");
   const img = offeringDiv
     .querySelector(".more-infos-content")
-    .getElementsByTagName("img")[0].src;
+    .getElementsByTagName("img")[0]?.src;
 
   return {
     offering: offeringInfos[offeringInfos.length - 1].trim(),
@@ -58,7 +58,7 @@ async function getOfferingOfTheMonth(month) {
     monthOfferings[date] = getOfferingDatas(html);
   }
 
-  console.log(`${MONTHS[month]} done ✅`);
+  console.log(`${MONTHS[month - 1]} done ✅`);
   return monthOfferings;
 }
 
@@ -72,11 +72,8 @@ for (let month = 1; month <= 12; month++) {
         ...monthOfferings,
       };
     })
-    .catch((error) => console.log(error));
+    .finally(() => {
+      fs.writeFileSync("./almanaxDB.json", JSON.stringify(yearOfferings));
+      console.log("Offering db is ready!");
+    });
 }
-
-console.log("All data fetched writing db...");
-
-fs.writeFileSync("./almanaxDB.json", JSON.stringify(yearOfferings));
-
-console.log("DB generated! 🎉");
