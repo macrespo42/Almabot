@@ -8,9 +8,11 @@ Use this [link](https://discord.com/oauth2/authorize?client_id=12121229611090575
 
 ![setup screenshot](screenshots/setup.png)
 
-then click on continue
+choose the server you want to install the bot on then click on continue
 
 ![install screenshot](screenshots/install.png)
+
+and for finish click on authorize
 
 ## Availables commands
 
