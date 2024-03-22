@@ -36,7 +36,7 @@ function getOfferingDatas(html) {
 
 async function getOfferingOfTheMonth(month) {
   let monthOfferings = {};
-  const year = 2024;
+  const year = new Date().getFullYear();
 
   for (let day = 1; day < 31; day++) {
     const date = `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
@@ -55,7 +55,7 @@ async function getOfferingOfTheMonth(month) {
     }
     const html = await response.text();
 
-    monthOfferings[date] = getOfferingDatas(html);
+    monthOfferings[date.slice(5)] = getOfferingDatas(html);
   }
 
   console.log(`${MONTHS[month - 1]} done ✅`);
@@ -74,6 +74,6 @@ for (let month = 1; month <= 12; month++) {
     })
     .finally(() => {
       fs.writeFileSync("./almanaxDB.json", JSON.stringify(yearOfferings));
-      console.log("Offering db is ready!");
+      console.log("Offering db is ready! 🎉");
     });
 }
