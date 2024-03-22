@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const almanaxOfferings = require("../../../almanaxDB.json");
 
 function getTodayAlmanax() {
@@ -7,7 +7,13 @@ function getTodayAlmanax() {
     almanaxOfferings[
       `${(today.getMonth() + 1).toString().padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`
     ];
-  return `${todayOffering.bonusType}\n${todayOffering.bonus}\n${todayOffering?.img} ${todayOffering.offering}`;
+  const offeringEmbed = new EmbedBuilder()
+    .setColor(0x0099ff)
+    .setTitle(todayOffering.bonusType)
+    .setDescription(todayOffering.bonus)
+    .setThumbnail(todayOffering?.img)
+    .addFields({ name: "Offrande:", value: todayOffering.offering });
+  return offeringEmbed;
 }
 
 module.exports = {
@@ -15,6 +21,6 @@ module.exports = {
     .setName("almanax")
     .setDescription("Get the almanax of the day"),
   async execute(interaction) {
-    await interaction.reply(getTodayAlmanax());
+    await interaction.reply({ embeds: [getTodayAlmanax()] });
   },
 };
