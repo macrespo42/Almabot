@@ -38,9 +38,13 @@ async function getOfferingOfTheMonth(month) {
   let monthOfferings = {};
   const year = new Date().getFullYear();
 
-  for (let day = 1; day < 31; day++) {
+  for (let day = 1; day < 32; day++) {
     const date = `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
-    const response = await fetch(`https://www.krosmoz.com/fr/almanax/${date}`, {
+    const query = `https://www.krosmoz.com/fr/almanax/${date}${day === 31 && month === 3 ? "-pwak" : ""}`;
+    if (day === 31 && month === 3) {
+      console.log("PWAK", query);
+    }
+    const response = await fetch(query, {
       method: "GET",
       headers: {
         "User-Agent":
@@ -51,7 +55,7 @@ async function getOfferingOfTheMonth(month) {
     if (response.status === 404) {
       break;
     } else {
-      console.log(`${date}: ${response.status}`);
+      console.log(`OK`);
     }
     const html = await response.text();
 
