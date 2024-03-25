@@ -4,8 +4,9 @@
   "description": "A dofus discord bot for almanax and more...",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy:dev": "node src/deploy-commands-dev.js",
+    "deploy:prod": "node src/deploy-commands.js",
+    "start": "node src/index.js"
   },
   "keywords": [
     "dofus",
