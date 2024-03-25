@@ -1,20 +1,16 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
-const almanaxOfferings = require("../../../almanaxDB.json");
+const { getAlmanax } = require("../../modules/dofus");
 
-function getTodayAlmanax(day, month) {
-  const todayOffering =
-    almanaxOfferings[
-      `${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`
-    ];
+function formatResponse(offering) {
   const offeringEmbed = new EmbedBuilder()
-    .setColor(0x0099ff)
-    .setTitle(todayOffering?.bonusType ?? null)
-    .setDescription(todayOffering?.bonus ?? null)
-    .setThumbnail(todayOffering?.img ?? null)
-    .setImage(todayOffering?.img ?? null)
+    .setColor(0xbacd47)
+    .setTitle(offering?.bonusType ?? null)
+    .setDescription(offering?.bonus ?? null)
+    .setThumbnail(offering?.img ?? null)
+    .setImage(offering?.img ?? null)
     .addFields({
       name: "Offrande:",
-      value: todayOffering?.offering ?? "Invalid date",
+      value: offering?.offering ?? "Invalid date",
     });
   return offeringEmbed;
 }
@@ -34,6 +30,8 @@ module.exports = {
     const day = interaction.options.getInteger("day") ?? today.getDate();
     const month =
       interaction.options.getInteger("month") ?? today.getMonth() + 1;
-    await interaction.reply({ embeds: [getTodayAlmanax(day, month)] });
+    await interaction.reply({
+      embeds: [formatResponse(getAlmanax(day, month))],
+    });
   },
 };
