@@ -5,9 +5,9 @@ const getYesterday = (today) => {
 };
 
 const getTomorrow = (today) => {
-  let yesterday = new Date(today.getTime());
-  yesterday.setDate(yesterday.getDate() + 1);
-  return yesterday;
+  let tomorrow = new Date(today.getTime());
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return tomorrow;
 };
 
 const getFirsDayOfTheWeek = (today) => {

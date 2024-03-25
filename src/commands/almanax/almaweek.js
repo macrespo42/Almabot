@@ -1,11 +1,37 @@
-const { SlashCommandBuilder } = require("discord.js");
-const { getAlmanax } = require("../../modules/dofus");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const { getAlmaweek } = require("../../modules/dofus");
+
+function formatResponse(offering) {
+  const offeringEmbed = new EmbedBuilder()
+    .setColor(0xbacd47)
+    .setTitle(offering?.day ?? null)
+    .setThumbnail(offering?.img ?? null)
+    .setImage(offering?.img ?? null)
+    .addFields(
+      {
+        name: offering?.bonusType ?? "Bonus type not found",
+        value: offering?.bonus ?? "Bonus not found",
+      },
+      {
+        name: "Offrande:",
+        value: offering?.offering ?? "Invalid date",
+      },
+    );
+  return offeringEmbed;
+}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("almaweek")
     .setDescription("get almanax for the whole week"),
   async execute(interaction) {
-    await interaction.reply(`Today offering: ${getAlmanax(28, 7).offering}`);
+    const almaweek = getAlmaweek();
+    const embededs = [];
+    for (const day of almaweek) {
+      embededs.push(formatResponse(day));
+    }
+    await interaction.reply({
+      embeds: [...embededs],
+    });
   },
 };
