@@ -18,9 +18,13 @@ and for finish click on authorize
 
 ``/almanax``
 
-![setup screenshot](screenshots/almanax_basic.png)
+![almanax screenshot](screenshots/almanax_basic.png)
 
 You can also pick a date with day / month arguments
 
 Ex: ``/almanax 28 07``
 
+
+``/almaweek``
+
+![almaweek screenshot](screenshots/almaweek.png)
