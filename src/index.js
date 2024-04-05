@@ -1,4 +1,4 @@
-const process = require("process");
+const process = require("node:process");
 const fs = require("node:fs");
 const path = require("node:path");
 require("dotenv").config();

@@ -1,4 +1,4 @@
-const process = require("process");
+const process = require("node:process");
 require("dotenv").config();
 const { REST, Routes } = require("discord.js");
 const fs = require("node:fs");

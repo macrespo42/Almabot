@@ -28,3 +28,5 @@ Ex: ``/almanax 28 07``
 ``/almaweek``
 
 ![almaweek screenshot](screenshots/almaweek.png)
+
+Need to contact me ? maxime.crespo@protonmail.com
