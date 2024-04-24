@@ -17,7 +17,15 @@ const getFirsDayOfTheWeek = (today) => {
   return today;
 };
 
+const getNextMonday = (today) => {
+  while (today.getDay() !== 1) {
+    today = getTomorrow(today);
+  }
+  return today;
+};
+
 module.exports = {
   getTomorrow,
   getFirsDayOfTheWeek,
+  getNextMonday,
 };

@@ -1,5 +1,5 @@
 const almanaxOfferings = require("../../almanaxDB.json");
-const { getFirsDayOfTheWeek, getTomorrow } = require("./time");
+const { getFirsDayOfTheWeek, getTomorrow, getNextMonday } = require("./time");
 const DAYS = [
   "Dimanche",
   "Lundi",
@@ -32,7 +32,21 @@ const getAlmaweek = () => {
   return almaweek;
 };
 
+const getAlmaNextWeek = () => {
+  const almaweek = [];
+  const today = new Date();
+  let monday = getNextMonday(today);
+  do {
+    const almanax = getAlmanax(monday.getDate(), monday.getMonth() + 1);
+    almanax.day = `${DAYS[monday.getDay()]}`;
+    almaweek.push(almanax);
+    monday = getTomorrow(monday);
+  } while (monday.getDay() !== 1);
+  return almaweek;
+};
+
 module.exports = {
   getAlmanax,
   getAlmaweek,
+  getAlmaNextWeek,
 };
