@@ -25,8 +25,21 @@ You can also pick a date with day / month arguments
 Ex: ``/almanax 28 07``
 
 
+``/almatomorow`` (same as almanax is just return the almanax for tomorow)
+
 ``/almaweek``
 
 ![almaweek screenshot](screenshots/almaweek.png)
+
+get almanax for the whole current week
+
+``/almanextweek`` (Same as almaweek but start at the next coming monday)
+
+
+``/dolmanax $pages`` Gives you the date you obtained your precious Dolmanax.
+
+⚠️  $page is an mandatory argument for the commands you need to give the number of pages you got. You can find it here:
+
+![pages screenshot](screenshots/dolmanax.png)
 
 Need to contact me ? maxime.crespo@protonmail.com
