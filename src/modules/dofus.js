@@ -1,14 +1,6 @@
 const almanaxOfferings = require("../../almanaxDB.json");
 const { getFirsDayOfTheWeek, getTomorrow, getNextMonday } = require("./time");
-const DAYS = [
-  "Dimanche",
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi",
-];
+const { DAYS } = require("constants.js");
 
 const getAlmanax = (day, month) => {
   const offering =
