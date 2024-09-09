@@ -1,20 +1,7 @@
 const fs = require("node:fs");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december",
-];
+const { EN_MONTHS } = require("./modules/constants.js");
 
 function getOfferingDatas(html) {
   const dom = new JSDOM(html);
@@ -62,7 +49,7 @@ async function getOfferingOfTheMonth(month) {
     monthOfferings[date.slice(5)] = getOfferingDatas(html);
   }
 
-  console.log(`${MONTHS[month - 1]} done ✅`);
+  console.log(`${EN_MONTHS[month - 1]} done ✅`);
   return monthOfferings;
 }
 

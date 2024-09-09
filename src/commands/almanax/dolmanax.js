@@ -1,28 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 
-const MONTHS = [
-  "Janvier",
-  "Fevrier",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Aout",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Decembre",
-];
-const DAYS = [
-  "Dimanche",
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi",
-  "Samedi",
-];
+const { MONTHS, DAYS } = require("../../modules/constants.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
