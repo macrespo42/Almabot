@@ -4,10 +4,10 @@
   "description": "A dofus discord bot for almanax and more...",
   "main": "index.js",
   "scripts": {
-    "populate": "node src/generate_offering_list.js",
-    "deploy:dev": "node src/deploy-commands-dev.js",
-    "deploy:prod": "node src/deploy-commands.js",
-    "start": "TZ=Europe/Paris node src/index.js"
+    "populate": "bun run src/generate_offering_list.js",
+    "deploy:dev": "bun run src/deploy-commands-dev.js",
+    "deploy:prod": "bun run src/deploy-commands.js",
+    "start": "bun run deploy:prod && bun run src/index.js"
   },
   "keywords": [
     "dofus",
