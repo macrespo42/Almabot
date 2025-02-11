@@ -1,0 +1,16 @@
+services:
+  almabot:
+    container_name: almabot
+    image: macrespo42/almabot:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 500M
+    environment:
+      CLIENT_ID: "${CLIENT_ID}"
+      DISCORD_TOKEN: "${DISCORD_TOKEN}"
+      TZ: "Europe/Paris"
